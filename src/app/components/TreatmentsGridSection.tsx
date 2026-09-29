@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 
 interface TreatmentItem {
   id: string;
@@ -664,7 +665,7 @@ export default function TreatmentsGridSection() {
               {/* Full-bleed crisp background image */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
-                  src={treatment.image}
+                  src={getAssetPath(treatment.image)}
                   alt={treatment.imageAlt}
                   fill
                   priority={idx < 3}
@@ -848,7 +849,7 @@ export default function TreatmentsGridSection() {
               {/* Treatment Photo Banner */}
               <div className="relative w-full h-44 sm:h-54 rounded-2xl overflow-hidden mb-4 bg-slate-100 shadow-inner">
                 <Image
-                  src={activeModal.image}
+                  src={getAssetPath(activeModal.image)}
                   alt={activeModal.imageAlt}
                   fill
                   className="object-cover"

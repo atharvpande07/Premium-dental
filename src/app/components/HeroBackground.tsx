@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 
 interface HeroBackgroundProps {
   pointerOffset?: { x: number; y: number };
@@ -35,7 +36,7 @@ export default function HeroBackground({ pointerOffset = { x: 0, y: 0 } }: HeroB
         }}
       >
         <Image
-          src="/hero-artwork.webp"
+          src={getAssetPath("/hero-artwork.webp")}
           alt="Floating sculptural tooth over soft clouds with glass orbital ring and clinical architecture"
           fill
           priority

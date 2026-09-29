@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 import ModernDentalScan from "./ModernDentalScan";
 
 const CARE_CATEGORIES = [
@@ -332,7 +333,7 @@ export default function BentoGridSection() {
                   <div className="relative flex items-end gap-2.5 shrink-0 w-full sm:w-auto">
                     <div className="relative w-full sm:w-[220px] lg:w-[245px] h-[135px] sm:h-[150px] lg:h-[155px] rounded-2xl overflow-hidden border border-white/90 shadow-md group/img">
                       <Image
-                        src={currentCategory.image}
+                        src={getAssetPath(currentCategory.image)}
                         alt={currentCategory.imageAlt}
                         fill
                         className="object-cover object-center transition-transform duration-500 group-hover/img:scale-105"

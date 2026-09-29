@@ -12,6 +12,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import Image from "next/image";
+import { getAssetPath } from "../utils/assetPath";
 
 /* -------------------------------------------------------------
  * Easing Curve Constant
@@ -343,7 +344,7 @@ export default function ModernDentalScan() {
               className="relative w-full h-full will-change-[transform,opacity]"
             >
               <Image 
-                src="/dentist-mock-image.png"
+                src={getAssetPath("/dentist-mock-image.png")}
                 alt="Dr. Julian Vance"
                 fill
                 sizes="(max-width: 640px) 350px, (max-width: 1024px) 440px, (max-width: 1280px) 360px, 390px"
