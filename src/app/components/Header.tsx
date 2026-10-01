@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 
 const NAV_LINKS = [
   { name: "Treatments", href: "#treatments" },
@@ -24,25 +26,26 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-none pointer-events-none"
       >
         <div className="w-full max-w-[1440px] mx-auto px-[clamp(1.25rem,4vw,4rem)] h-[clamp(4.25rem,6vw,5.25rem)] flex items-center justify-between transition-all duration-300 pointer-events-auto">
-          {/* LEFT: Dental Clinic Wordmark + Geometric Icon (Liquid Glass) */}
+          {/* LEFT: Dental Clinic Wordmark + Clinic Logo (Liquid Glass) */}
           <Link
             href="#hero"
-            className="liquid-glass-pill px-4 py-2 gap-2.5 group transition-all duration-300 focus:outline-none liquid-glass-light"
+            className="liquid-glass-pill px-3 py-1.5 gap-2.5 group transition-all duration-300 focus:outline-none liquid-glass-light flex items-center"
             aria-label="Vighnaharta Dental Clinic Home"
           >
-            {/* Geometric Mark */}
-            <div className="flex flex-col gap-0.5">
-              <div className="flex items-center gap-0.5">
-                <span className="w-2.5 h-2.5 rounded-[1px] bg-[#09111e]" />
-                <span className="w-2.5 h-2.5 rounded-[1px] bg-[#09111e]/40" />
-              </div>
-              <div className="flex items-center gap-0.5 pl-1.5">
-                <span className="w-2.5 h-2.5 rounded-[1px] bg-pink-500" />
-              </div>
+            {/* Crisp Vighnaharta Dental Clinic Logo Badge */}
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-white shadow-xs border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <Image
+                src={getAssetPath("/vighnaharta-logo.png")}
+                alt="Vighnaharta Dental Clinic Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain p-0.5"
+                priority
+              />
             </div>
 
-            <div className="flex items-baseline gap-1.5 ml-1">
-              <span className="text-[0.9375rem] sm:text-[1rem] font-semibold tracking-[-0.01em] text-[#09111e]">
+            <div className="flex items-baseline gap-1.5 ml-0.5">
+              <span className="text-[0.9375rem] sm:text-[1rem] font-bold tracking-[-0.01em] text-[#09111e]">
                 Vighnaharta Dental
               </span>
             </div>

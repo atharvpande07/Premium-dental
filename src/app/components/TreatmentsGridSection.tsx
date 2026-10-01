@@ -685,11 +685,15 @@ export default function TreatmentsGridSection() {
               </div>
 
               {/* Top-Left Mark: Small understated white clinic monogram/logo */}
-              <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10 flex items-center gap-1.5 pointer-events-none opacity-85">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-xs">
-                  <span className="text-[9px] sm:text-[10px] font-black text-white tracking-tighter">
-                    VD
-                  </span>
+              <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10 flex items-center gap-2 pointer-events-none opacity-90">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/90 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-xs overflow-hidden">
+                  <Image
+                    src={getAssetPath("/vighnaharta-logo.png")}
+                    alt="Vighnaharta Logo"
+                    width={24}
+                    height={24}
+                    className="w-full h-full object-contain p-0.5"
+                  />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-extrabold text-white tracking-widest uppercase opacity-90 drop-shadow-sm font-display">
                   VIGHNAHARTA

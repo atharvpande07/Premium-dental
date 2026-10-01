@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 
 const TREATMENTS_LIST = [
   { id: "cosmetic-dentistry", name: "Cosmetic Dentistry & Veneers" },
@@ -353,14 +355,14 @@ export default function Footer() {
             <div>
               {/* Dental Studio Brand Lockup */}
               <Link href="#hero" className="inline-flex items-center gap-2.5 group focus:outline-none mb-4" aria-label="Vighnaharta Dental Clinic Home">
-                <div className="flex flex-col gap-0.5">
-                  <div className="flex items-center gap-0.5">
-                    <span className="w-2.5 h-2.5 rounded-[1px] bg-white group-hover:bg-pink-400 transition-colors" />
-                    <span className="w-2.5 h-2.5 rounded-[1px] bg-white/40" />
-                  </div>
-                  <div className="flex items-center gap-0.5 pl-1.5">
-                    <span className="w-2.5 h-2.5 rounded-[1px] bg-pink-500" />
-                  </div>
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white shadow-sm border border-white/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Image
+                    src={getAssetPath("/vighnaharta-logo.png")}
+                    alt="Vighnaharta Dental Clinic Logo"
+                    width={36}
+                    height={36}
+                    className="w-full h-full object-contain p-0.5"
+                  />
                 </div>
                 <span className="text-xl font-bold tracking-tight text-white group-hover:text-pink-300 transition-colors">
                   Vighnaharta Dental
