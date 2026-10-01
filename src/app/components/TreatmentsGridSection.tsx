@@ -688,11 +688,11 @@ export default function TreatmentsGridSection() {
               <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10 flex items-center gap-1.5 pointer-events-none opacity-85">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-xs">
                   <span className="text-[9px] sm:text-[10px] font-black text-white tracking-tighter">
-                    A+
+                    VD
                   </span>
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-extrabold text-white tracking-widest uppercase opacity-90 drop-shadow-sm font-display">
-                  AURA
+                  VIGHNAHARTA
                 </span>
               </div>
 
@@ -785,10 +785,10 @@ export default function TreatmentsGridSection() {
             href="#book"
             className="px-4 py-2 rounded-full border border-slate-300/80 bg-white/80 hover:bg-white text-xs sm:text-sm font-medium text-slate-700 tracking-wide transition-all shadow-2xs hover:shadow-xs hover:border-slate-400"
           >
-            @AURA.DENTALSTUDIO
+            @VIGHNAHARTA.DENTAL
           </a>
           <a
-            href="tel:+18005550192"
+            href="tel:+917823812717"
             className="px-4 py-2 rounded-full border border-[#09111e] bg-[#09111e] hover:bg-[#1a2333] text-xs sm:text-sm font-semibold text-white tracking-wide transition-all shadow-xs"
           >
             BOOK CONSULTATION ↗
@@ -933,7 +933,7 @@ export default function TreatmentsGridSection() {
                   Book This Treatment
                 </a>
                 <a
-                  href="tel:+18005550192"
+                  href="tel:+917823812717"
                   className="w-full sm:w-auto py-3 px-5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-center font-semibold text-sm transition-colors"
                 >
                   Ask a Question

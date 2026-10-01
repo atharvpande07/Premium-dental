@@ -127,10 +127,12 @@ export default function BentoGridSection() {
 
   return (
     <section
-      id="innovation"
-      className="relative z-10 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-3 pb-12 sm:pb-16 select-none font-sans"
+      id="technology"
+      className="relative z-10 w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-3 pb-12 sm:pb-16 select-none font-sans scroll-mt-20 sm:scroll-mt-24"
       aria-label="Modern Dental Care Bento Grid"
     >
+      <div id="team" className="absolute -top-20" aria-hidden="true" />
+      <div id="innovation" className="absolute -top-20" aria-hidden="true" />
       {/* REST OF BENTO GRID: Scan Bay + Dual Stats (Left) & Care That Fits You Card (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-stretch">
             {/* LEFT 5 COLUMNS: Stamp + 3-Bay Digital Scan Card + Dual Stat Capsules */}

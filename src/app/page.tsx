@@ -34,20 +34,20 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none z-10" />
         </div>
 
-        {/* 3. About Us / Studio Section (Brought up into position) */}
+        {/* 3. About Us / Studio Section (Typography & Philosophy) */}
         <StudioSection />
 
-        {/* Bento Grid Section */}
-        <BentoGridSection />
+        {/* 4. Treatments Grid Section (Shifted up after studio typography section) */}
+        <TreatmentsGridSection />
 
-        {/* 3D Spatial Google Reviews Zoom Section (Between Bento Grid & Treatments) */}
+        {/* 5. 3D Spatial Google Reviews Zoom Section (Placed after treatments section) */}
         <GoogleReviewsSpatialZoom />
 
-        {/* Treatments Grid Section (Exact 7-card layout structure matching reference) */}
-        <TreatmentsGridSection />
+        {/* 6. Bento Grid Section (Modern Technology & Patient Care) */}
+        <BentoGridSection />
       </div>
 
-      {/* 4. Ultra-Premium Black Footer & Consultation Suite */}
+      {/* 7. Ultra-Premium Black Footer & Consultation Suite */}
       <Footer />
     </main>
   );

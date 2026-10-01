@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aura Dental | Precision Dentistry. Designed Around You.",
+  title: "Vighnaharta Dental Clinic | Best Dentist in Pusad | Root Canal Specialist & Implants",
   description:
-    "Advanced dental care, precise treatment, and a calmer experience — thoughtfully designed to help you smile with complete confidence.",
+    "Vighnaharta Dental Clinic in Pusad, Maharashtra. Led by Dr. Amol Manthankar. Advanced Root Canal Treatment, Digital Dental Implants, Smile Makeovers & Painless Dentistry. Book your consultation today.",
 };
 
 export default function RootLayout({

@@ -28,7 +28,7 @@ export default function Header() {
           <Link
             href="#hero"
             className="liquid-glass-pill px-4 py-2 gap-2.5 group transition-all duration-300 focus:outline-none liquid-glass-light"
-            aria-label="Aura Dental Studio Home"
+            aria-label="Vighnaharta Dental Clinic Home"
           >
             {/* Geometric Mark */}
             <div className="flex flex-col gap-0.5">
@@ -43,7 +43,7 @@ export default function Header() {
 
             <div className="flex items-baseline gap-1.5 ml-1">
               <span className="text-[0.9375rem] sm:text-[1rem] font-semibold tracking-[-0.01em] text-[#09111e]">
-                Aura Dental
+                Vighnaharta Dental
               </span>
             </div>
           </Link>

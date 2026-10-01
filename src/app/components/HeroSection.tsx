@@ -54,7 +54,7 @@ export default function HeroSection() {
       onMouseMove={(e) => e.stopPropagation()}
       onPointerLeave={handlePointerLeave}
       className="relative w-full min-h-[100dvh] flex flex-col justify-between overflow-hidden pt-[clamp(4.25rem,6.5vh,5.75rem)] pb-3 sm:pb-4 transition-all duration-300 ease-out"
-      aria-label="Aura Dental Clinic Precision Dentistry"
+      aria-label="Vighnaharta Dental Clinic Pusad"
     >
       {/* 1. Cinematic Background Layer with Tooth Artwork */}
       <HeroBackground pointerOffset={pointerOffset} />

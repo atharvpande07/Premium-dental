@@ -172,7 +172,7 @@ const SPATIAL_REVIEWS: SpatialReview[] = [
     rating: 5,
     timeAgo: "1 week ago",
     reviewText:
-      "Had an impacted wisdom tooth that was throbbing with pain. Dr. Vance removed it in 15 minutes flat with zero after-swelling.",
+      "Had an impacted wisdom tooth that was throbbing with pain. Dr. Amol removed it in 15 minutes flat with zero after-swelling.",
     gridArea: "2/4",
     range: [0.32, 0.52],
   },
@@ -367,7 +367,7 @@ const SPATIAL_REVIEWS: SpatialReview[] = [
     rating: 5,
     timeAgo: "3 days ago",
     reviewText:
-      "Best dental cleaning experience. Zero discomfort and no gum sensitivity. Dr. Julian Vance is genuinely kind, thorough, and brilliant.",
+      "Best dental cleaning experience. Zero discomfort and no gum sensitivity. Dr. Amol Manthankar is genuinely kind, thorough, and brilliant.",
     gridArea: "4/4",
     range: [0.92, 1.00],
   },
@@ -655,7 +655,7 @@ export default function GoogleReviewsSpatialZoom() {
                 ))}
               </div>
               <span className="text-[10px] sm:text-xs font-bold text-slate-800 tracking-wider uppercase font-sans">
-                4.9 • Google Reviews
+                4.9 ★ • 104 Google Reviews
               </span>
             </div>
 
