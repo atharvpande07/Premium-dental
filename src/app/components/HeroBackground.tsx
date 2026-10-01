@@ -4,6 +4,9 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
 
+const HERO_BLUR_DATA_URL =
+  "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAwCdASoUAAsAPzmEuVOvKKWisAgB4CcJbACdAA+IM3nlAAD+kNEe+GW9cg03e956FuX842JSN34XKsvrHmajX2h1l1sSM8UOrjykiTEPwWabAzUKAn7NsO8YEAAA";
+
 interface HeroBackgroundProps {
   pointerOffset?: { x: number; y: number };
 }
@@ -40,7 +43,8 @@ export default function HeroBackground({ pointerOffset = { x: 0, y: 0 } }: HeroB
           alt="Floating sculptural tooth over soft clouds with glass orbital ring and clinical architecture"
           fill
           priority
-          quality={80}
+          placeholder="blur"
+          blurDataURL={HERO_BLUR_DATA_URL}
           className="object-cover object-[58%_center] sm:object-[60%_center] lg:object-[66%_center] transition-[object-position] duration-500 ease-out"
           sizes="100vw"
         />
