@@ -27,7 +27,7 @@ export default function Home() {
       <div className="relative w-full overflow-x-clip">
         {/* Full-bleed WebGPU Fluted Glass & ChromaFlow Background Shader (Sticky Viewport Bound) */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-          <div className="sticky top-0 w-full h-screen overflow-hidden">
+          <div className="sticky top-0 w-full h-[100svh] lg:h-screen overflow-hidden">
             <BentoShaderBackground />
           </div>
           {/* Subtle top gradient to dissolve smoothly from the white bottom of the Hero */}

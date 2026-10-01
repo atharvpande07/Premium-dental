@@ -53,14 +53,14 @@ export default function HeroSection() {
       }}
       onMouseMove={(e) => e.stopPropagation()}
       onPointerLeave={handlePointerLeave}
-      className="relative w-full min-h-[100dvh] flex flex-col justify-between overflow-hidden pt-[clamp(4.25rem,6.5vh,5.75rem)] pb-3 sm:pb-4 transition-all duration-300 ease-out"
+      className="relative w-full min-h-[100svh] lg:min-h-[100dvh] flex flex-col justify-between overflow-hidden pt-[clamp(4.25rem,5.25rem,5.75rem)] pb-3 sm:pb-4"
       aria-label="Vighnaharta Dental Clinic Pusad"
     >
       {/* 1. Cinematic Background Layer with Tooth Artwork */}
       <HeroBackground pointerOffset={pointerOffset} />
 
       {/* 2. Center-Left Content Zone: Headline, Supporting Text, Dual CTAs */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[clamp(1.25rem,4vw,4rem)] flex-1 flex flex-col justify-center my-auto py-1 sm:py-2 transition-all duration-300">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[clamp(1.25rem,4vw,4rem)] flex-1 flex flex-col justify-center my-auto py-1 sm:py-2">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 w-full">
           {/* Left Column: Typography & CTAs */}
           <div className="w-full max-w-[min(100%,740px)] flex flex-col justify-center">
@@ -73,7 +73,7 @@ export default function HeroSection() {
       </div>
 
       {/* 3. Lower Deck: Trust Microcopy & Marquee cleanly anchored at bottom */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[clamp(1.25rem,4vw,4rem)] mt-auto mb-1 transition-all duration-300">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[clamp(1.25rem,4vw,4rem)] mt-auto mb-1">
         <div className="w-full sm:w-auto max-w-[520px]">
           <TrustMarquee />
         </div>

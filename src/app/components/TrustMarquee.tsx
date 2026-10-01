@@ -72,7 +72,7 @@ export default function TrustMarquee() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full max-w-[min(100%,500px)] flex flex-col gap-2 select-none transition-all duration-300"
+      className="w-full max-w-[min(100%,500px)] flex flex-col gap-2 select-none"
     >
       {/* Supporting Trust Statement */}
       <p className="text-[clamp(0.65rem,0.6vw+0.45rem,0.75rem)] uppercase tracking-[0.14em] text-[#475569] font-medium [text-shadow:0_1px_2px_rgba(255,255,255,0.7)]">

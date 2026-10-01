@@ -22,7 +22,7 @@ export default function HeroContent() {
   };
 
   return (
-    <div className="w-full max-w-[min(100%,740px)] flex flex-col items-start text-left transition-all duration-300">
+    <div className="w-full max-w-[min(100%,740px)] flex flex-col items-start text-left">
       {/* Primary Headline Container with Subtle Drop Shadow Background */}
       <div className="relative inline-block max-w-full">
         {/* Soft Ambient Drop Shadow Background */}

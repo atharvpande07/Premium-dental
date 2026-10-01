@@ -45,7 +45,7 @@ export default function HeroBackground({ pointerOffset = { x: 0, y: 0 } }: HeroB
           priority
           placeholder="blur"
           blurDataURL={HERO_BLUR_DATA_URL}
-          className="object-cover object-[58%_center] sm:object-[60%_center] lg:object-[66%_center] transition-[object-position] duration-500 ease-out"
+          className="object-cover object-[58%_center] sm:object-[60%_center] lg:object-[66%_center]"
           sizes="100vw"
         />
       </motion.div>
