@@ -8,6 +8,7 @@ export const client01Data: ClinicConfig = {
   watermark: "VIGHNAHARTA",
   monogram: "VD",
   instagramHandle: "@VIGHNAHARTA.DENTAL",
+  logoPath: "/vighnaharta-logo.png",
 
   doctor: {
     name: "Dr. Amol Manthankar",

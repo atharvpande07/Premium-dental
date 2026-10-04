@@ -8,6 +8,7 @@ export const client10Data: ClinicConfig = {
   watermark: "APEX DENTAL",
   monogram: "AD",
   instagramHandle: "@APEX.DENTAL10",
+  logoPath: "/universal-dental-logo.png",
 
   doctor: {
     name: "Dr. Clinic Specialist",

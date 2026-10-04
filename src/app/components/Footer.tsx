@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
+import { clinicData } from "../data/clinicData";
 
 const TREATMENTS_LIST = [
   { id: "cosmetic-dentistry", name: "Cosmetic Dentistry & Veneers" },
@@ -97,7 +98,7 @@ export default function Footer() {
     <footer
       id="book"
       className="relative w-full bg-[#05080f] text-slate-200 font-sans border-t border-white/[0.08] overflow-hidden select-none"
-      aria-label="Vighnaharta Dental Footer and Appointment Booking"
+      aria-label={`${clinicData.name} Footer and Appointment Booking`}
     >
       {/* Subtle Luminous Ambient Background Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -321,7 +322,7 @@ export default function Footer() {
 
                     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                       <a
-                        href={`https://wa.me/917823812717?text=Hello%20Vighnaharta%20Dental%2C%20my%20booking%20reference%20is%20${bookingCode}.%20Please%20confirm%20my%20slot.`}
+                        href={`https://wa.me/${clinicData.contact.phoneRaw}?text=Hello%20${encodeURIComponent(clinicData.shortName)}%2C%20my%20booking%20reference%20is%20${bookingCode}.%20Please%20confirm%20my%20slot.`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold transition-all"
@@ -354,18 +355,18 @@ export default function Footer() {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               {/* Dental Studio Brand Lockup */}
-              <Link href="#hero" className="inline-flex items-center gap-2.5 group focus:outline-none mb-4" aria-label="Vighnaharta Dental Clinic Home">
+              <Link href="#hero" className="inline-flex items-center gap-2.5 group focus:outline-none mb-4" aria-label={`${clinicData.name} Home`}>
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white shadow-sm border border-white/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Image
-                    src={getAssetPath("/vighnaharta-logo.png")}
-                    alt="Vighnaharta Dental Clinic Logo"
+                    src={getAssetPath(clinicData.logoPath || "/universal-dental-logo.png")}
+                    alt={`${clinicData.name} Logo`}
                     width={36}
                     height={36}
                     className="w-full h-full object-contain p-0.5"
                   />
                 </div>
                 <span className="text-xl font-bold tracking-tight text-white group-hover:text-pink-300 transition-colors">
-                  Vighnaharta Dental
+                  {clinicData.shortName}
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm bg-white/10 text-slate-300">
                   Clinic
@@ -383,14 +384,14 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>Vighnaharta Dental Clinic • Pusad</span>
+                  <span>{clinicData.contact.addressHeadline}</span>
                 </div>
                 <p className="text-slate-400 pl-5 leading-normal">
-                  Vasantrao Naik Chowk, Shree Sainath Plaza Complex, Near Aadhar Medical, Pusad, Maharashtra 445204
+                  {clinicData.contact.addressFull}
                 </p>
                 <div className="pt-2 pl-5 flex items-center gap-3">
                   <a
-                    href="https://maps.google.com/?q=Vighnaharta+Dental+Clinic+Pusad+Maharashtra"
+                    href={clinicData.contact.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-pink-400 hover:text-pink-300 font-semibold inline-flex items-center gap-1 text-[11px]"
@@ -399,7 +400,7 @@ export default function Footer() {
                     <span>↗</span>
                   </a>
                   <button
-                    onClick={() => handleCopy("Vasantrao Naik Chowk, Shree Sainath Plaza Complex, Near Aadhar Medical, Pusad, Maharashtra 445204", "address")}
+                    onClick={() => handleCopy(clinicData.contact.addressFull, "address")}
                     className="text-slate-400 hover:text-white font-medium text-[11px] underline cursor-pointer"
                   >
                     Copy Address
@@ -459,7 +460,7 @@ export default function Footer() {
               <div className="space-y-3 text-xs">
                 <button
                   type="button"
-                  onClick={() => handleCopy("+917823812717", "emergency contact")}
+                  onClick={() => handleCopy(clinicData.contact.phoneTel, "emergency contact")}
                   className="w-full text-left p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-emerald-500/30 transition-all flex items-center gap-3 cursor-pointer group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center shrink-0">
@@ -467,13 +468,13 @@ export default function Footer() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold tracking-wider text-emerald-400">Emergency & Appointments Desk</div>
-                    <div className="text-slate-300 font-semibold group-hover:text-white transition-colors">+91 78238 12717</div>
+                    <div className="text-slate-300 font-semibold group-hover:text-white transition-colors">{clinicData.contact.phoneDisplay}</div>
                   </div>
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => handleCopy("contact@vighnahartadental.com", "email")}
+                  onClick={() => handleCopy(clinicData.contact.email, "email")}
                   className="w-full text-left p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-pink-500/30 transition-all flex items-center gap-3 cursor-pointer group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 border border-pink-500/20 flex items-center justify-center shrink-0">
@@ -481,7 +482,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold tracking-wider text-pink-400">Direct Concierge Email</div>
-                    <div className="text-slate-300 font-semibold group-hover:text-white transition-colors">contact@vighnahartadental.com</div>
+                    <div className="text-slate-300 font-semibold group-hover:text-white transition-colors">{clinicData.contact.email}</div>
                   </div>
                 </button>
               </div>
@@ -503,7 +504,7 @@ export default function Footer() {
         <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/[0.08]">
           {/* Social Links */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-400 mr-2 font-medium">Follow Vighnaharta Dental:</span>
+            <span className="text-xs text-slate-400 mr-2 font-medium">Follow {clinicData.shortName}:</span>
 
             {/* Instagram */}
             <a
@@ -511,7 +512,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white/[0.05] hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 text-slate-300 hover:text-white border border-white/[0.08] hover:border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110"
-              aria-label="Vighnaharta Dental Instagram"
+              aria-label={`${clinicData.name} Instagram`}
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -524,7 +525,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white/[0.05] hover:bg-red-600 text-slate-300 hover:text-white border border-white/[0.08] hover:border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110"
-              aria-label="Vighnaharta Dental YouTube"
+              aria-label={`${clinicData.name} YouTube`}
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -537,7 +538,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white/[0.05] hover:bg-blue-600 text-slate-300 hover:text-white border border-white/[0.08] hover:border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110"
-              aria-label="Vighnaharta Dental LinkedIn"
+              aria-label={`${clinicData.name} LinkedIn`}
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -572,7 +573,7 @@ export default function Footer() {
            ========================================================= */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>© {new Date().getFullYear()} Vighnaharta Dental Clinic. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} {clinicData.name}. All rights reserved.</span>
             <span className="hidden sm:inline text-slate-700">•</span>
             <span className="text-slate-400">Pusad, Maharashtra</span>
           </div>
@@ -640,7 +641,7 @@ export default function Footer() {
                 {legalModal === "privacy" && (
                   <>
                     <p>
-                      At Vighnaharta Dental Clinic, confidentiality and patient diagnostic records are strictly preserved with complete clinical security.
+                      At {clinicData.name}, confidentiality and patient diagnostic records are strictly preserved with complete clinical security.
                     </p>
                     <p>
                       We never sell, distribute, or share patient medical data with third parties. Patient imaging is only transmitted securely to certified dental laboratories for customized milling, crowns, and aligner manufacturing with patient consent.
@@ -660,7 +661,7 @@ export default function Footer() {
                 {legalModal === "compliance" && (
                   <>
                     <p>
-                      Vighnaharta Dental Clinic adheres strictly to multi-stage autoclave sterilization protocols mandated by international healthcare and dental safety standards.
+                      {clinicData.name} adheres strictly to multi-stage autoclave sterilization protocols mandated by international healthcare and dental safety standards.
                     </p>
                     <p>
                       Every instrument pouch is barcoded and opened directly in front of the patient. Operatory suites feature continuous medical air filtration and automated surface disinfection between patient appointments.

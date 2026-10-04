@@ -6,6 +6,7 @@ export interface ClinicConfig {
   watermark: string;
   monogram: string;
   instagramHandle: string;
+  logoPath?: string;
 
   doctor: {
     name: string;

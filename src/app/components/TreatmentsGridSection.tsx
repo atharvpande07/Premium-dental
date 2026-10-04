@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
+import { clinicData } from "../data/clinicData";
 
 interface TreatmentItem {
   id: string;
@@ -688,15 +689,15 @@ export default function TreatmentsGridSection() {
               <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10 flex items-center gap-2 pointer-events-none opacity-90">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/90 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-xs overflow-hidden">
                   <Image
-                    src={getAssetPath("/vighnaharta-logo.png")}
-                    alt="Vighnaharta Logo"
+                    src={getAssetPath(clinicData.logoPath || "/universal-dental-logo.png")}
+                    alt={`${clinicData.name} Logo`}
                     width={24}
                     height={24}
                     className="w-full h-full object-contain p-0.5"
                   />
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-extrabold text-white tracking-widest uppercase opacity-90 drop-shadow-sm font-display">
-                  VIGHNAHARTA
+                  {clinicData.watermark || clinicData.shortName.toUpperCase()}
                 </span>
               </div>
 
@@ -789,10 +790,10 @@ export default function TreatmentsGridSection() {
             href="#book"
             className="px-4 py-2 rounded-full border border-slate-300/80 bg-white/80 hover:bg-white text-xs sm:text-sm font-medium text-slate-700 tracking-wide transition-all shadow-2xs hover:shadow-xs hover:border-slate-400"
           >
-            @VIGHNAHARTA.DENTAL
+            {clinicData.instagramHandle}
           </a>
           <a
-            href="tel:+917823812717"
+            href={`tel:${clinicData.contact.phoneTel}`}
             className="px-4 py-2 rounded-full border border-[#09111e] bg-[#09111e] hover:bg-[#1a2333] text-xs sm:text-sm font-semibold text-white tracking-wide transition-all shadow-xs"
           >
             BOOK CONSULTATION ↗

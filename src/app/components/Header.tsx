@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
+import { clinicData } from "../data/clinicData";
 
 const NAV_LINKS = [
   { name: "Treatments", href: "#treatments" },
@@ -30,13 +31,13 @@ export default function Header() {
           <Link
             href="#hero"
             className="liquid-glass-pill px-3 py-1.5 gap-2.5 group transition-all duration-300 focus:outline-none liquid-glass-light flex items-center"
-            aria-label="Vighnaharta Dental Clinic Home"
+            aria-label={`${clinicData.name} Home`}
           >
-            {/* Crisp Vighnaharta Dental Clinic Logo Badge */}
+            {/* Crisp Clinic Logo Badge */}
             <div className="w-8 h-8 rounded-full overflow-hidden bg-white shadow-xs border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               <Image
-                src={getAssetPath("/vighnaharta-logo.png")}
-                alt="Vighnaharta Dental Clinic Logo"
+                src={getAssetPath(clinicData.logoPath || "/universal-dental-logo.png")}
+                alt={`${clinicData.name} Logo`}
                 width={32}
                 height={32}
                 className="w-full h-full object-contain p-0.5"
@@ -46,7 +47,7 @@ export default function Header() {
 
             <div className="flex items-baseline gap-1.5 ml-0.5">
               <span className="text-[0.9375rem] sm:text-[1rem] font-bold tracking-[-0.01em] text-[#09111e]">
-                Vighnaharta Dental
+                {clinicData.shortName}
               </span>
             </div>
           </Link>
