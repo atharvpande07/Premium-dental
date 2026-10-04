@@ -25,8 +25,7 @@ export const client02Data: ClinicConfig = {
 
   reputation: {
     rating: 5.0,
-    reviewCount: "10+",
-    badgeText: "5.0 ★ Rating (10 Google Reviews) • Pusad",
+    badgeText: "5.0 ★ Top Rated • Verified Google Reviews",
     subCaption:
       "Flawless 5.0-star experiences from patients in Pusad praising painless root canal treatments, meticulous hygiene, and attentive care.",
   },

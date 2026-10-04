@@ -656,7 +656,7 @@ export default function GoogleReviewsSpatialZoom() {
                 ))}
               </div>
               <span className="text-[10px] sm:text-xs font-bold text-slate-800 tracking-wider uppercase font-sans">
-                {clinicData.reputation.rating} ★ • {clinicData.reputation.reviewCount} Google Reviews
+                {clinicData.reputation.rating.toFixed(1)} ★ • Verified Google Reviews
               </span>
             </div>
 

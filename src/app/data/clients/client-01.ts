@@ -25,8 +25,7 @@ export const client01Data: ClinicConfig = {
 
   reputation: {
     rating: 5.0,
-    reviewCount: "29+",
-    badgeText: "5.0 ★ Rating (29+ Reviews) • Pusad",
+    badgeText: "5.0 ★ Top Rated • Verified Google Reviews",
     subCaption:
       "Authentic experiences from patients in Pusad who received painless treatments, advanced implants, and caring dentistry.",
   },

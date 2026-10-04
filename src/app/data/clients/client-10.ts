@@ -25,8 +25,7 @@ export const client10Data: ClinicConfig = {
 
   reputation: {
     rating: 4.9,
-    reviewCount: "120+",
-    badgeText: "4.9 ★ Rating (120+ Reviews)",
+    badgeText: "5.0 ★ Top Rated • Verified Google Reviews",
     subCaption:
       "Authentic experiences from patients who found gentle care, clarity, and renewed smile confidence.",
   },

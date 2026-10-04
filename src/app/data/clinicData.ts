@@ -22,7 +22,7 @@ export interface ClinicConfig {
 
   reputation: {
     rating: number;
-    reviewCount: string;
+    reviewCount?: string;
     badgeText: string;
     subCaption: string;
   };

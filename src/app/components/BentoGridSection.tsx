@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
 import ModernDentalScan from "./ModernDentalScan";
+import { clinicData } from "../data/clinicData";
 
 const CARE_CATEGORIES = [
   {
@@ -187,7 +188,7 @@ export default function BentoGridSection() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-slate-900 tracking-tight leading-none">
-                      4.9/5
+                      {clinicData.reputation.rating.toFixed(1)}/5
                     </div>
                     <div className="text-xs font-semibold text-slate-800 mt-1 leading-tight">
                       Patient Satisfaction
