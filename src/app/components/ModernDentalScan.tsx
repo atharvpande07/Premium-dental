@@ -13,6 +13,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { getAssetPath } from "../utils/assetPath";
+import { clinicData } from "../data/clinicData";
 
 /* -------------------------------------------------------------
  * Easing Curve Constant
@@ -345,7 +346,7 @@ export default function ModernDentalScan() {
             >
               <Image 
                 src={getAssetPath("/dentist-mock-image.png")}
-                alt="Dr. Amol Manthankar"
+                alt={clinicData.doctor.name}
                 fill
                 sizes="(max-width: 640px) 350px, (max-width: 1024px) 440px, (max-width: 1280px) 360px, 390px"
                 className="object-contain object-bottom drop-shadow-sm"
@@ -392,7 +393,7 @@ export default function ModernDentalScan() {
               style={{ opacity: badge1Opacity, x: badge1X, filter: badge1Filter }}
               className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#f3e8ff] text-[9px] sm:text-[10px] font-bold tracking-[0.08em] text-[#6b21a8] uppercase will-change-[transform,opacity,filter]"
             >
-              Root Canal Specialist
+              {clinicData.doctor.badge1}
             </motion.div>
 
             <motion.div
@@ -402,18 +403,18 @@ export default function ModernDentalScan() {
               <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span className="text-[11px] sm:text-[13px]">Chief Dental Surgeon</span>
+              <span className="text-[11px] sm:text-[13px]">{clinicData.doctor.badge2}</span>
             </motion.div>
           </div>
 
-          {/* Name Headings ("Dr. Amol Manthankar BDS, Endodontist") */}
+          {/* Name Headings */}
           <div className="mb-1.5 sm:mb-2">
             <motion.h2
               style={{ opacity: nameOpacity, x: nameX, filter: nameFilter }}
               className="font-serif text-[1.85rem] xs:text-[2.25rem] sm:text-[3.25rem] lg:text-[3.5rem] text-slate-900 leading-[0.95] tracking-tight will-change-[transform,opacity,filter]"
             >
-              Dr. Amol<br />
-              Manthankar <span className="font-sans text-base xs:text-lg sm:text-2xl lg:text-[2.25rem] font-semibold text-[#a855f7] tracking-normal inline-block align-baseline ml-0.5 sm:ml-1">BDS, Endodontist</span>
+              {clinicData.doctor.firstName}<br />
+              {clinicData.doctor.lastName} <span className="font-sans text-base xs:text-lg sm:text-2xl lg:text-[2.25rem] font-semibold text-[#a855f7] tracking-normal inline-block align-baseline ml-0.5 sm:ml-1">{clinicData.doctor.degrees}</span>
             </motion.h2>
           </div>
 
@@ -422,7 +423,7 @@ export default function ModernDentalScan() {
             style={{ opacity: subtextOpacity, x: subtextX, filter: subtextFilter }}
             className="text-slate-700 font-medium text-[11px] xs:text-[12px] sm:text-[14px] lg:text-[15px] mb-3 sm:mb-5 tracking-tight will-change-[transform,opacity,filter]"
           >
-            Specialist in Painless Root Canals, Implants & Smile Design
+            {clinicData.doctor.specialty}
           </motion.p>
 
           {/* Quote Description Block */}
@@ -431,7 +432,7 @@ export default function ModernDentalScan() {
             className="border-l-[2.5px] sm:border-l-[3px] border-[#a855f7] pl-3 sm:pl-5 mb-3 sm:mb-4 py-0.5 sm:py-1 will-change-[transform,opacity,filter]"
           >
             <p className="font-serif italic text-slate-600 text-[11px] xs:text-[13px] sm:text-[1rem] lg:text-[1.1rem] leading-relaxed pr-1 sm:pr-4">
-              &quot;We combine modern technology with gentle, patient-focused care — ensuring your root canal, crown, or dental implant is completely pain-free and lasting.&quot;
+              &quot;{clinicData.doctor.quote}&quot;
             </p>
           </motion.div>
 

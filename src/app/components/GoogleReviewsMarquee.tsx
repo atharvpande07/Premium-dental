@@ -9,6 +9,7 @@ import {
   useReducedMotion,
   type MotionValue,
 } from "framer-motion";
+import { clinicData } from "../data/clinicData";
 
 interface SpatialReview {
   id: string;
@@ -367,7 +368,7 @@ const SPATIAL_REVIEWS: SpatialReview[] = [
     rating: 5,
     timeAgo: "3 days ago",
     reviewText:
-      "Best dental cleaning experience. Zero discomfort and no gum sensitivity. Dr. Amol Manthankar is genuinely kind, thorough, and brilliant.",
+      "Best dental cleaning experience. Zero discomfort and no gum sensitivity. Highly professional, attentive, and gentle care.",
     gridArea: "4/4",
     range: [0.92, 1.00],
   },
@@ -655,7 +656,7 @@ export default function GoogleReviewsSpatialZoom() {
                 ))}
               </div>
               <span className="text-[10px] sm:text-xs font-bold text-slate-800 tracking-wider uppercase font-sans">
-                4.9 ★ • 104 Google Reviews
+                {clinicData.reputation.rating} ★ • {clinicData.reputation.reviewCount} Google Reviews
               </span>
             </div>
 

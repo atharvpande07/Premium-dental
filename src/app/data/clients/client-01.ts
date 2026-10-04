@@ -1,51 +1,51 @@
 import { ClinicConfig } from "../clinicData";
 
 export const client01Data: ClinicConfig = {
-  name: "Vighnaharta Dental Clinic",
-  marathiName: "विघ्नहर्ता डेंटल क्लिनिक",
-  shortName: "Vighnaharta Dental",
-  tagline: "Best Dentist in Pusad | Root Canal Specialist | Dental Implant | Smile Makeover",
-  watermark: "VIGHNAHARTA",
-  monogram: "VD",
-  instagramHandle: "@VIGHNAHARTA.DENTAL",
-  logoPath: "/vighnaharta-logo.png",
+  name: "Deshmukh Dental Clinic & Implant Centre",
+  marathiName: "देशमुख डेंटल क्लिनिक अँड इंप्लांट सेंटर",
+  shortName: "Deshmukh Dental",
+  tagline: "Dental Clinic & Implant Centre | Dr. Nikitesh Deshmukh | Pusad",
+  watermark: "DESHMUKH DENTAL",
+  monogram: "DD",
+  instagramHandle: "@DESHMUKH.DENTAL",
+  logoPath: "/universal-dental-logo.png",
 
   doctor: {
-    name: "Dr. Amol Manthankar",
-    firstName: "Dr. Amol",
-    lastName: "Manthankar",
-    title: "Root Canal Specialist & Implantologist",
-    degrees: "BDS, Endodontic Specialist",
-    badge1: "Root Canal Specialist",
+    name: "Dr. Nikitesh Deshmukh",
+    firstName: "Dr. Nikitesh",
+    lastName: "Deshmukh",
+    title: "Dental Surgeon & Implant Specialist",
+    degrees: "BDS, Implantologist",
+    badge1: "Dental Implant Specialist",
     badge2: "Chief Dental Surgeon",
-    specialty: "Advanced Endodontics, Dental Implants & Smile Design",
+    specialty: "Advanced Implantology, Laser Dentistry & Painless Root Canals",
     quote:
-      "We combine modern technology with gentle, patient-focused care — ensuring your root canal, dental implant, or smile transformation is completely pain-free and built to last.",
+      "We are dedicated to providing advanced dentistry with genuine care — utilizing modern technology, meticulous hygiene standards, and gentle, pain-free techniques for every patient.",
   },
 
   reputation: {
-    rating: 4.9,
-    reviewCount: "104+",
-    badgeText: "4.9 ★ Rating (104+ Reviews) • Pusad",
+    rating: 5.0,
+    reviewCount: "29+",
+    badgeText: "5.0 ★ Rating (29+ Reviews) • Pusad",
     subCaption:
-      "Authentic experiences from patients in Pusad who received painless root canal treatments, implants, and gentle dental care.",
+      "Authentic experiences from patients in Pusad who received painless treatments, advanced implants, and caring dentistry.",
   },
 
   contact: {
-    phoneDisplay: "+91 78238 12717",
-    phoneTel: "+917823812717",
-    phoneRaw: "917823812717",
-    waLink: "https://wa.link/1qa5iz",
-    email: "contact@vighnahartadental.com",
-    addressHeadline: "Vighnaharta Dental Clinic • Pusad",
+    phoneDisplay: "+91 80555 24782",
+    phoneTel: "+918055524782",
+    phoneRaw: "918055524782",
+    waLink: "https://wa.me/918055524782",
+    email: "contact@deshmukhdental.com",
+    addressHeadline: "Deshmukh Dental Clinic & Implant Centre • Pusad",
     addressFull:
-      "Vasantrao Naik Chowk, Shree Sainath Plaza Complex, Near Aadhar Medical, Pusad, Maharashtra 445204",
-    plusCode: "WH4F+48 Pusad, Maharashtra",
+      "Sarnaik Complex, Near Bus Stand, Pusad, Maharashtra 445204",
+    plusCode: "WH48+MXQ Pusad, Maharashtra",
     googleMapsUrl:
-      "https://maps.google.com/?q=Vighnaharta+Dental+Clinic+Pusad+Maharashtra",
-    hoursWeekdays: "Monday – Saturday: 10:00 AM – 8:30 PM",
+      "https://maps.google.com/?q=Deshmukh+Dental+Clinic+Sarnaik+complex+near+Busstand+Pusad+Maharashtra+445204",
+    hoursWeekdays: "Monday – Saturday: 10:00 AM – 8:00 PM",
     hoursSunday: "Sunday: 10:00 AM – 2:00 PM (Emergency Consultation)",
   },
 
-  bookingPrefix: "VDC-",
+  bookingPrefix: "DDC-",
 };

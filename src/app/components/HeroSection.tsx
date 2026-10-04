@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import HeroBackground from "./HeroBackground";
 import HeroContent from "./HeroContent";
 import TrustMarquee from "./TrustMarquee";
+import { clinicData } from "../data/clinicData";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ export default function HeroSection() {
       onMouseMove={(e) => e.stopPropagation()}
       onPointerLeave={handlePointerLeave}
       className="relative w-full min-h-[100svh] lg:min-h-[100dvh] flex flex-col justify-between overflow-hidden pt-[clamp(4.25rem,5.25rem,5.75rem)] pb-3 sm:pb-4"
-      aria-label="Vighnaharta Dental Clinic Pusad"
+      aria-label={`${clinicData.name} Pusad`}
     >
       {/* 1. Cinematic Background Layer with Tooth Artwork */}
       <HeroBackground pointerOffset={pointerOffset} />

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { clinicData } from "./data/clinicData";
 
 export const metadata: Metadata = {
-  title: "Vighnaharta Dental Clinic | Best Dentist in Pusad | Root Canal Specialist & Implants",
-  description:
-    "Vighnaharta Dental Clinic in Pusad, Maharashtra. Led by Dr. Amol Manthankar. Advanced Root Canal Treatment, Digital Dental Implants, Smile Makeovers & Painless Dentistry. Book your consultation today.",
+  title: `${clinicData.name} | ${clinicData.tagline}`,
+  description: `${clinicData.name} in Pusad, Maharashtra. Led by ${clinicData.doctor.name}. ${clinicData.doctor.specialty}. Book your consultation today.`,
 };
 
 export default function RootLayout({
