@@ -1,49 +1,51 @@
 import { ClinicConfig } from "../clinicData";
 
 export const client02Data: ClinicConfig = {
-  name: "Apex Dental Studio 02",
-  marathiName: "डेंटल क्लिनिक 02",
-  shortName: "Apex Dental 02",
-  tagline: "Precision Dentistry | Root Canal Specialist | Dental Implant | Smile Makeover",
-  watermark: "APEX DENTAL",
-  monogram: "AD",
-  instagramHandle: "@APEX.DENTAL02",
+  name: "Dr. Farha's Apex Dental Care",
+  marathiName: "डॉ. फरहा यांचे ॲपेक्स डेंटल केअर",
+  shortName: "Apex Dental Care",
+  tagline: "Root Canal Specialist | Gentle Aesthetic Dentistry | Pusad",
+  watermark: "APEX DENTAL CARE",
+  monogram: "FD",
+  instagramHandle: "@DRFARHA.APEXDENTAL",
   logoPath: "/universal-dental-logo.png",
 
   doctor: {
-    name: "Dr. Clinic Specialist",
-    firstName: "Dr.",
-    lastName: "Specialist",
-    title: "Root Canal Specialist & Implantologist",
-    degrees: "BDS, MDS",
+    name: "Dr. Farha Syed",
+    firstName: "Dr. Farha",
+    lastName: "Syed",
+    title: "Dental Surgeon & Root Canal Specialist",
+    degrees: "BDS, Dental Surgeon",
     badge1: "Root Canal Specialist",
     badge2: "Chief Dental Surgeon",
-    specialty: "Advanced Endodontics, Dental Implants & Smile Design",
+    specialty: "Painless Root Canal Treatment, Aesthetic Restorations & Gentle Dental Care",
     quote:
-      "We combine modern technology with gentle, patient-focused care — ensuring your treatment is completely pain-free and lasting.",
+      "We prioritize gentle, compassionate, and precise dentistry — taking exceptional care during every root canal treatment and ensuring your smile is healthy and pain-free.",
   },
 
   reputation: {
-    rating: 4.9,
-    reviewCount: "120+",
-    badgeText: "4.9 ★ Rating (120+ Reviews)",
+    rating: 5.0,
+    reviewCount: "10+",
+    badgeText: "5.0 ★ Rating (10 Google Reviews) • Pusad",
     subCaption:
-      "Authentic experiences from patients who found gentle care, clarity, and renewed smile confidence.",
+      "Flawless 5.0-star experiences from patients in Pusad praising painless root canal treatments, meticulous hygiene, and attentive care.",
   },
 
   contact: {
-    phoneDisplay: "+91 98765 43210",
-    phoneTel: "+919876543210",
-    phoneRaw: "919876543210",
-    waLink: "https://wa.me/919876543210",
-    email: "contact@apexdental02.com",
-    addressHeadline: "Apex Dental Studio 02",
-    addressFull: "Level 1, Commercial Complex, Main Avenue",
-    plusCode: "PITCH-02",
-    googleMapsUrl: "https://maps.google.com",
-    hoursWeekdays: "Monday – Saturday: 10:00 AM – 8:30 PM",
+    phoneDisplay: "+91 91580 00000",
+    phoneTel: "+919158000000",
+    phoneRaw: "919158000000",
+    waLink: "https://wa.me/919158000000",
+    email: "contact@apexdentalpusad.com",
+    addressHeadline: "Dr. Farha's Apex Dental Care • Pusad",
+    addressFull:
+      "Hamida Masjid Road, Ummat Nagar, Near Dr. Imran Clinic, Pusad, Maharashtra 445204",
+    plusCode: "WH66+QR Pusad, Maharashtra",
+    googleMapsUrl:
+      "https://maps.google.com/?q=Dr+Farha+Apex+Dental+Care+Hamida+masjid+road+Ummat+nagar+Pusad+Maharashtra+445204",
+    hoursWeekdays: "Monday – Saturday: 10:00 AM – 8:00 PM",
     hoursSunday: "Sunday: 10:00 AM – 2:00 PM (Emergency Consultation)",
   },
 
-  bookingPrefix: "AD02-",
+  bookingPrefix: "ADC-",
 };
