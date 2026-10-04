@@ -33,7 +33,7 @@ jobs:
       - name: Build static site with Next.js
         run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /Premium-dental
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
