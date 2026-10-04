@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "switch": "node scripts/switch-client.js",
+    "deploy-pitch": "node scripts/deploy-pitch.js"
   },
   "dependencies": {
     "framer-motion": "^13.1.1",
