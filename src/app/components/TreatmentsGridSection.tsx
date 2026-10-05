@@ -714,8 +714,9 @@ export default function TreatmentsGridSection() {
               <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 md:p-7 z-10 flex flex-col justify-end pointer-events-none">
                 {/* Clean 2-line title */}
                 <h3
-                  className="font-display font-extrabold text-white tracking-tight mb-2 sm:mb-3 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] whitespace-pre-line leading-[1.06]"
+                  className="font-anek-latin font-extrabold text-white tracking-tight mb-2 sm:mb-3 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] whitespace-pre-line leading-[1.06]"
                   style={{
+                    fontFamily: 'var(--font-anek-latin), "Anek Latin Local", "Anek Latin", sans-serif',
                     fontSize: "clamp(1.35rem, 2.2vw, 2.25rem)",
                     letterSpacing: "-0.025em",
                     color: "#FFFFFF",
@@ -885,7 +886,10 @@ export default function TreatmentsGridSection() {
               {/* Title */}
               <h3
                 id="modal-treatment-title"
-                className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#09111e] tracking-tight mb-1.5 font-display"
+                className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#09111e] tracking-tight mb-1.5 font-anek-latin"
+                style={{
+                  fontFamily: 'var(--font-anek-latin), "Anek Latin Local", "Anek Latin", sans-serif',
+                }}
               >
                 {activeModal.title}
               </h3>
