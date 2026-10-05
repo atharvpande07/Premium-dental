@@ -43,6 +43,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800;900&family=Anek+Latin:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
+        />
+      </head>
       <body className="antialiased font-sans bg-[#f3f7fb] text-[#09111e] overflow-x-clip">
         {children}
       </body>
