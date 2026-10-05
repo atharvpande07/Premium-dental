@@ -4,7 +4,7 @@ const path = require('path');
 
 const slotArg = process.argv[2];
 if (!slotArg) {
-  console.log('Usage: node scripts/deploy-pitch.js <slot-number (01 - 10)>');
+  console.log('Usage: node scripts/deploy-pitch.js <slot-number (01 - 05)>');
   console.log('Example: node scripts/deploy-pitch.js 02');
   process.exit(1);
 }
