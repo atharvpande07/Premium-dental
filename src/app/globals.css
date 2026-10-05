@@ -361,7 +361,7 @@
   --ease-cb-2: cubic-bezier(.19, 1, .22, 1);
   --ease-cb-3: cubic-bezier(.77, 0, .175, 1);
   --ease-cb-4: cubic-bezier(.99, 1, .92, 1);
-  --font-header: 'Montserrat', -apple-system, sans-serif;
+  --font-header: var(--font-dm-sans), 'DM Sans', 'DM Sans Local', sans-serif;
   --font-nav: 'Space Mono', monospace;
 }
 
@@ -542,14 +542,15 @@
 }
 
 .slice-slider-wrapper .slide__title {
-  font-family: var(--font-header);
-  font-size: clamp(1.85rem, 6.2vw, 4.6rem);
-  font-weight: 800;
+  font-family: var(--font-dm-sans), 'DM Sans', 'DM Sans Local', sans-serif;
+  font-size: clamp(2rem, 5.8vw, 4.5rem);
+  font-weight: 700;
   color: #ffffff;
   overflow: hidden;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.85));
 }
 
 /* Slice Text Line Reveals */

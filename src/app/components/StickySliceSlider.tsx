@@ -136,7 +136,14 @@ export default function StickySliceSlider() {
   const [isSliding, setIsSliding] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isTransitioningRef = useRef(false);
+  const cooldownTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const activeSlideRef = useRef(0);
+  activeSlideRef.current = activeSlide;
   const lastActiveRef = useRef(0);
+
+  // Wheel delta accumulator to prevent accidental hair-trigger misfires
+  const wheelDeltaAccumulatorRef = useRef(0);
+  const accumulatorResetTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Touch Swipe coordinates
   const touchStartXRef = useRef<number | null>(null);
@@ -148,94 +155,314 @@ export default function StickySliceSlider() {
     offset: ["start start", "end end"],
   });
 
-  // Switch slide handler with animation lock
-  const goToSlide = useCallback((index: number) => {
-    if (isTransitioningRef.current || index === lastActiveRef.current) return;
-    if (index < 0 || index >= SLICE_SLIDES.length) return;
+  // Calculate target scroll position for a specific slide
+  const scrollToSlide = useCallback((index: number) => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+    const currentScrollY = window.scrollY;
+    const containerTop = currentScrollY + rect.top;
+    const totalScrollRange = container.offsetHeight - window.innerHeight;
+    if (totalScrollRange <= 0) return;
 
-    isTransitioningRef.current = true;
-    setIsSliding(true);
-    setActiveSlide(index);
-    lastActiveRef.current = index;
-
-    setTimeout(() => {
-      setIsSliding(false);
-      isTransitioningRef.current = false;
-    }, 700);
+    const targetY = containerTop + (totalScrollRange * index) / (SLICE_SLIDES.length - 1);
+    window.scrollTo({
+      top: Math.round(targetY),
+      behavior: "smooth",
+    });
   }, []);
 
+  // Switch slide handler with animation lock and optional window scroll sync
+  const goToSlide = useCallback(
+    (index: number, shouldScrollWindow = true) => {
+      if (index < 0 || index >= SLICE_SLIDES.length) return;
+      if (index === activeSlideRef.current && !isTransitioningRef.current) return;
+
+      isTransitioningRef.current = true;
+      setIsSliding(true);
+      setActiveSlide(index);
+      activeSlideRef.current = index;
+      lastActiveRef.current = index;
+
+      if (shouldScrollWindow) {
+        scrollToSlide(index);
+      }
+
+      if (cooldownTimerRef.current) clearTimeout(cooldownTimerRef.current);
+      cooldownTimerRef.current = setTimeout(() => {
+        setIsSliding(false);
+        isTransitioningRef.current = false;
+      }, 750);
+    },
+    [scrollToSlide]
+  );
+
   const handlePrev = useCallback(() => {
-    const nextIdx = (activeSlide - 1 + SLICE_SLIDES.length) % SLICE_SLIDES.length;
-    goToSlide(nextIdx);
-  }, [activeSlide, goToSlide]);
+    const nextIdx = (activeSlideRef.current - 1 + SLICE_SLIDES.length) % SLICE_SLIDES.length;
+    goToSlide(nextIdx, true);
+  }, [goToSlide]);
 
   const handleNext = useCallback(() => {
-    const nextIdx = (activeSlide + 1) % SLICE_SLIDES.length;
-    goToSlide(nextIdx);
-  }, [activeSlide, goToSlide]);
+    const nextIdx = (activeSlideRef.current + 1) % SLICE_SLIDES.length;
+    goToSlide(nextIdx, true);
+  }, [goToSlide]);
 
-  // Touch gesture handlers for mobile swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
-    touchStartYRef.current = e.touches[0].clientY;
-  };
+  // Non-passive wheel listener: forces strictly card-by-card snap and absorbs fast scrolls
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!containerRef.current) return;
+      const container = containerRef.current;
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
-    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
-    const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
+      // The container is pinned when its top has reached viewport top and bottom hasn't exited
+      const isPinned = rect.top <= 20 && rect.bottom >= windowHeight - 20;
 
-    // Trigger on horizontal swipe > 35px that is more horizontal than vertical
-    if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX < 0) {
-        handleNext();
-      } else {
-        handlePrev();
+      if (!isPinned) {
+        // High-velocity catch: if user is scrolling down and approaching the container top
+        if (e.deltaY > 0 && rect.top > 0 && rect.top <= 60 && activeSlideRef.current === 0) {
+          e.preventDefault();
+          const containerTop = window.scrollY + rect.top;
+          window.scrollTo({ top: containerTop, behavior: "smooth" });
+        }
+        return;
       }
-    }
-    touchStartXRef.current = null;
-    touchStartYRef.current = null;
-  };
 
-  // Sync scroll progress with active slide
+      const currentSlide = activeSlideRef.current;
+      const delta = e.deltaY;
+
+      // 1. User is scrolling DOWN
+      if (delta > 0) {
+        // If not yet on the last card, ALWAYS intercept to snap card by card!
+        if (currentSlide < SLICE_SLIDES.length - 1) {
+          e.preventDefault();
+
+          // If a slide animation is currently running, absorb fast scroll flings completely
+          if (isTransitioningRef.current) {
+            return;
+          }
+
+          wheelDeltaAccumulatorRef.current += delta;
+          if (accumulatorResetTimerRef.current) clearTimeout(accumulatorResetTimerRef.current);
+          accumulatorResetTimerRef.current = setTimeout(() => {
+            wheelDeltaAccumulatorRef.current = 0;
+          }, 200);
+
+          if (wheelDeltaAccumulatorRef.current >= 25) {
+            wheelDeltaAccumulatorRef.current = 0;
+            goToSlide(currentSlide + 1, true);
+          }
+          return;
+        }
+
+        // On the last card (Card 2):
+        // If the window has not reached the bottom of the sticky container yet:
+        if (rect.bottom > windowHeight + 20) {
+          e.preventDefault();
+          if (!isTransitioningRef.current) {
+            wheelDeltaAccumulatorRef.current += delta;
+            if (accumulatorResetTimerRef.current) clearTimeout(accumulatorResetTimerRef.current);
+            accumulatorResetTimerRef.current = setTimeout(() => {
+              wheelDeltaAccumulatorRef.current = 0;
+            }, 200);
+
+            if (wheelDeltaAccumulatorRef.current >= 25) {
+              wheelDeltaAccumulatorRef.current = 0;
+              scrollToSlide(SLICE_SLIDES.length - 1);
+            }
+          }
+          return;
+        }
+
+        // Last card & bottom reached -> Natural scroll down to Treatments!
+        return;
+      }
+
+      // 2. User is scrolling UP
+      if (delta < 0) {
+        // If not on the first card, ALWAYS intercept to snap card by card in reverse!
+        if (currentSlide > 0) {
+          e.preventDefault();
+
+          if (isTransitioningRef.current) {
+            return;
+          }
+
+          wheelDeltaAccumulatorRef.current += delta;
+          if (accumulatorResetTimerRef.current) clearTimeout(accumulatorResetTimerRef.current);
+          accumulatorResetTimerRef.current = setTimeout(() => {
+            wheelDeltaAccumulatorRef.current = 0;
+          }, 200);
+
+          if (wheelDeltaAccumulatorRef.current <= -25) {
+            wheelDeltaAccumulatorRef.current = 0;
+            goToSlide(currentSlide - 1, true);
+          }
+          return;
+        }
+
+        // On the first card (Card 0):
+        // If the window has not reached the top of the container yet:
+        if (rect.top < -20) {
+          e.preventDefault();
+          if (!isTransitioningRef.current) {
+            wheelDeltaAccumulatorRef.current += delta;
+            if (accumulatorResetTimerRef.current) clearTimeout(accumulatorResetTimerRef.current);
+            accumulatorResetTimerRef.current = setTimeout(() => {
+              wheelDeltaAccumulatorRef.current = 0;
+            }, 200);
+
+            if (wheelDeltaAccumulatorRef.current <= -25) {
+              wheelDeltaAccumulatorRef.current = 0;
+              scrollToSlide(0);
+            }
+          }
+          return;
+        }
+
+        // First card & top reached -> Natural scroll up to Doctor / Bento!
+        return;
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [goToSlide, scrollToSlide]);
+
+  // Touch gesture handlers: prevents skipping on mobile and allows card-by-card snap
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartXRef.current = e.touches[0].clientX;
+      touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!containerRef.current || touchStartYRef.current === null) return;
+      const container = containerRef.current;
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const isPinned = rect.top <= 20 && rect.bottom >= windowHeight - 20;
+
+      if (!isPinned) return;
+
+      const currentY = e.touches[0].clientY;
+      const currentX = e.touches[0].clientX;
+      const deltaY = touchStartYRef.current - currentY; // positive = swipe up = scroll down
+      const deltaX = (touchStartXRef.current ?? currentX) - currentX;
+      const currentSlide = activeSlideRef.current;
+
+      // If predominantly horizontal swipe, let touchend handle it
+      if (Math.abs(deltaX) > Math.abs(deltaY) + 10) return;
+
+      // Vertical swipe UP (intent to scroll DOWN)
+      if (deltaY > 0) {
+        if (currentSlide < SLICE_SLIDES.length - 1) {
+          if (e.cancelable) e.preventDefault();
+          if (isTransitioningRef.current) return;
+          if (deltaY > 35) {
+            touchStartYRef.current = currentY;
+            goToSlide(currentSlide + 1, true);
+          }
+          return;
+        }
+      }
+
+      // Vertical swipe DOWN (intent to scroll UP)
+      if (deltaY < 0) {
+        if (currentSlide > 0) {
+          if (e.cancelable) e.preventDefault();
+          if (isTransitioningRef.current) return;
+          if (deltaY < -35) {
+            touchStartYRef.current = currentY;
+            goToSlide(currentSlide - 1, true);
+          }
+          return;
+        }
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+      const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
+      const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
+
+      // If horizontal swipe > 35px
+      if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
+      }
+      touchStartXRef.current = null;
+      touchStartYRef.current = null;
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [goToSlide, handleNext, handlePrev]);
+
+  // Sync scroll progress with active slide for scrollbar drag or fast jumps
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      let targetIndex = 0;
-      if (latest < 0.33) {
-        targetIndex = 0;
-      } else if (latest < 0.67) {
-        targetIndex = 1;
-      } else {
-        targetIndex = 2;
-      }
+      if (!isTransitioningRef.current) {
+        let targetIndex = 0;
+        if (latest < 0.33) {
+          targetIndex = 0;
+        } else if (latest < 0.67) {
+          targetIndex = 1;
+        } else {
+          targetIndex = 2;
+        }
 
-      if (targetIndex !== lastActiveRef.current && !isTransitioningRef.current) {
-        goToSlide(targetIndex);
+        if (targetIndex !== activeSlideRef.current) {
+          setActiveSlide(targetIndex);
+          activeSlideRef.current = targetIndex;
+          lastActiveRef.current = targetIndex;
+        }
       }
     });
 
     return () => unsubscribe();
-  }, [scrollYProgress, goToSlide]);
+  }, [scrollYProgress]);
 
   // Keyboard navigation support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        handleNext();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        handlePrev();
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!isVisible) return;
+
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown") {
+        if (activeSlideRef.current < SLICE_SLIDES.length - 1) {
+          e.preventDefault();
+          goToSlide(activeSlideRef.current + 1, true);
+        }
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") {
+        if (activeSlideRef.current > 0) {
+          e.preventDefault();
+          goToSlide(activeSlideRef.current - 1, true);
+        }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNext, handlePrev]);
+  }, [goToSlide]);
 
   return (
     <div
       ref={containerRef}
       id="technology"
-      className="relative w-full h-[280vh] scroll-mt-20 sm:scroll-mt-24 select-none"
+      className="relative w-full h-[300vh] scroll-mt-20 sm:scroll-mt-24 select-none"
     >
       <div id="care-pillars" className="absolute -top-24" aria-hidden="true" />
       <div id="innovation" className="absolute -top-24" aria-hidden="true" />
@@ -244,8 +471,6 @@ export default function StickySliceSlider() {
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden flex flex-col justify-center bg-slate-950/5 backdrop-blur-[2px]">
         {/* Main Slice Slider Root */}
         <div
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
           className={`slice-slider-wrapper relative w-full h-full max-w-[1440px] mx-auto px-2 sm:px-6 lg:px-10 pt-16 sm:pt-24 pb-2.5 sm:pb-6 flex flex-col justify-center ${
             isSliding ? "is-sliding" : ""
           }`}
@@ -371,10 +596,24 @@ export default function StickySliceSlider() {
                           </div>
 
                           {/* Split Title with Overflow Hidden & Staggered Reveal */}
-                          <h2 className="slide__title text-white">
+                          <h2
+                            className="slide__title font-dm-sans font-bold text-white tracking-tight"
+                            style={{
+                              fontFamily: 'var(--font-dm-sans), "DM Sans", "DM Sans Local", sans-serif',
+                              letterSpacing: "-0.025em",
+                              lineHeight: 1.06,
+                            }}
+                          >
                             {slide.titleLines.map((line, lIdx) => (
                               <span key={lIdx} className="title-line">
-                                <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+                                <span
+                                  className="text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]"
+                                  style={{
+                                    fontFamily: 'var(--font-dm-sans), "DM Sans", "DM Sans Local", sans-serif',
+                                    letterSpacing: "-0.025em",
+                                    color: "#FFFFFF",
+                                  }}
+                                >
                                   {line}
                                 </span>
                               </span>
