@@ -202,7 +202,7 @@ function renderStylizedHeadline(treatment: TreatmentItem) {
   const words = headline.split(" ");
 
   return (
-    <span className="inline-flex flex-wrap items-baseline justify-center gap-x-[0.28em] gap-y-1 sm:gap-y-2">
+    <span className="flex flex-col items-center justify-center leading-[0.96] sm:leading-[1.0] gap-y-0.5 sm:gap-y-1">
       {words.map((word, wIdx) => {
         const isScriptWord = wIdx === typographyDesign.scriptWordIndex;
         const isStarWord = wIdx === typographyDesign.starWordIndex;
@@ -211,7 +211,7 @@ function renderStylizedHeadline(treatment: TreatmentItem) {
         let starRendered = false;
 
         return (
-          <span key={wIdx} className="inline-flex items-baseline whitespace-nowrap">
+          <span key={wIdx} className="inline-flex items-baseline whitespace-nowrap tracking-[0.035em]">
             {word.split("").map((char, cIdx) => {
               const upperChar = char.toUpperCase();
 
@@ -225,7 +225,7 @@ function renderStylizedHeadline(treatment: TreatmentItem) {
                 return (
                   <span
                     key={cIdx}
-                    className="font-great-vibes text-[1.34em] font-normal leading-none inline-block -mx-[0.035em] transform translate-y-[0.04em] text-[#09111e] select-none"
+                    className="font-great-vibes text-[1.32em] font-normal leading-none inline-block -mx-[0.02em] transform translate-y-[0.02em] text-[#09111e] select-none"
                     style={{ fontFamily: 'var(--font-great-vibes), "Great Vibes", cursive' }}
                   >
                     {upperChar}
@@ -244,7 +244,7 @@ function renderStylizedHeadline(treatment: TreatmentItem) {
                   <span key={cIdx} className="relative inline-block">
                     {upperChar}
                     <span
-                      className="absolute -top-[0.34em] left-1/2 -translate-x-1/2 w-[0.42em] h-[0.42em] pointer-events-none text-[#09111e]"
+                      className="absolute -top-[0.32em] left-1/2 -translate-x-1/2 w-[0.4em] h-[0.4em] pointer-events-none text-[#09111e]"
                       aria-hidden="true"
                     >
                       <PortraitSparkleStar />
@@ -612,12 +612,11 @@ export default function TreatmentsGridSection() {
           </svg>
         </div>
 
-        {/* Vertically Enlarged Title: Tall, bold cap-height, condensed tracking, vertically prominent */}
+        {/* Section Title */}
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-[#09111e] uppercase inline-block origin-center transform scale-y-[1.18] sm:scale-y-[1.24]"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-[#09111e] uppercase inline-block origin-center tracking-tight"
           style={{
             fontFamily: "var(--font-display)",
-            letterSpacing: "-0.015em",
             lineHeight: 1,
           }}
         >
@@ -714,9 +713,9 @@ export default function TreatmentsGridSection() {
               <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 md:p-7 z-10 flex flex-col justify-end pointer-events-none">
                 {/* Clean 2-line title */}
                 <h3
-                  className="font-anek-latin font-extrabold text-white tracking-tight mb-2 sm:mb-3 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] whitespace-pre-line leading-[1.06]"
+                  className="font-dm-sans font-bold text-white tracking-tight mb-2 sm:mb-3 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] whitespace-pre-line leading-[1.06]"
                   style={{
-                    fontFamily: 'var(--font-anek-latin), "Anek Latin Local", "Anek Latin", sans-serif',
+                    fontFamily: 'var(--font-dm-sans), "DM Sans Local", "DM Sans", sans-serif',
                     fontSize: "clamp(1.35rem, 2.2vw, 2.25rem)",
                     letterSpacing: "-0.025em",
                     color: "#FFFFFF",
@@ -764,7 +763,7 @@ export default function TreatmentsGridSection() {
             {/* Main Headline: Bold Grotesque Sans + Different Cursive Script Letter per Card + Floating 4-Point Sparkle Star '✦' */}
             <div className="pt-0 pb-0.5 w-full flex justify-center">
               <h4
-                className="font-syne font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] text-[#09111e] tracking-[-0.03em] leading-[1.12] sm:leading-[1.16] uppercase select-none text-center max-w-3xl"
+                className="font-syne font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] text-[#09111e] uppercase select-none text-center max-w-3xl"
                 style={{
                   fontFamily: 'var(--font-syne), "Syne", "Plus Jakarta Sans", sans-serif',
                 }}
@@ -886,9 +885,9 @@ export default function TreatmentsGridSection() {
               {/* Title */}
               <h3
                 id="modal-treatment-title"
-                className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#09111e] tracking-tight mb-1.5 font-anek-latin"
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-[#09111e] tracking-tight mb-1.5 font-dm-sans"
                 style={{
-                  fontFamily: 'var(--font-anek-latin), "Anek Latin Local", "Anek Latin", sans-serif',
+                  fontFamily: 'var(--font-dm-sans), "DM Sans Local", "DM Sans", sans-serif',
                 }}
               >
                 {activeModal.title}

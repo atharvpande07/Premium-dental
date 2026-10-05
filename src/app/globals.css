@@ -41,6 +41,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "DM Sans Local";
+  src: url("/fonts/DM_Sans/static/DMSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans Local";
+  src: url("/fonts/DM_Sans/static/DMSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --color-ink: #09111e;
@@ -48,9 +64,10 @@
     --font-great-vibes: "Great Vibes Local", "Great Vibes", cursive;
     --font-anek-latin: "Anek Latin Local", "Anek Latin", sans-serif;
     --font-dm-sans: "DM Sans Local", "DM Sans", sans-serif;
-    --font-display: "Anek Latin Local", "Anek Latin", "Plus Jakarta Sans", "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "DM Sans Local", "DM Sans", "Plus Jakarta Sans", "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
     --font-syne: "Syne", sans-serif;
     --font-outfit: "Outfit", sans-serif;
+    --font-instrument-serif: "Instrument Serif", Georgia, serif;
   }
 
   .font-great-vibes {
@@ -75,6 +92,10 @@
 
   .font-outfit {
     font-family: var(--font-outfit);
+  }
+
+  .font-instrument-serif {
+    font-family: var(--font-instrument-serif);
   }
 
   * {

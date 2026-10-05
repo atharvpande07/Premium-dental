@@ -47,7 +47,10 @@ export default function HeroContent() {
           </span>
           <span className="block font-semibold bg-gradient-to-r from-white via-[#f4edff] to-[#cdbaf6] bg-clip-text text-transparent pb-1 whitespace-nowrap sm:whitespace-normal xl:whitespace-nowrap">
             Designed{" "}
-            <span className="font-great-vibes font-normal tracking-normal text-[1.22em] inline-block px-1">
+            <span
+              className="font-instrument-serif italic font-normal tracking-normal text-[1.18em] inline-block px-1"
+              style={{ fontFamily: 'var(--font-instrument-serif), "Instrument Serif", Georgia, serif' }}
+            >
               around
             </span>{" "}
             You
