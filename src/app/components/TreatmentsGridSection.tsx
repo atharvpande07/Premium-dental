@@ -715,7 +715,7 @@ export default function TreatmentsGridSection() {
                 <h3
                   className="font-dm-sans font-bold text-white tracking-tight mb-2 sm:mb-3 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] whitespace-pre-line leading-[1.06]"
                   style={{
-                    fontFamily: 'var(--font-dm-sans), "DM Sans Local", "DM Sans", sans-serif',
+                    fontFamily: 'var(--font-dm-sans), "DM Sans", "DM Sans Local", sans-serif',
                     fontSize: "clamp(1.35rem, 2.2vw, 2.25rem)",
                     letterSpacing: "-0.025em",
                     color: "#FFFFFF",
@@ -887,7 +887,7 @@ export default function TreatmentsGridSection() {
                 id="modal-treatment-title"
                 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#09111e] tracking-tight mb-1.5 font-dm-sans"
                 style={{
-                  fontFamily: 'var(--font-dm-sans), "DM Sans Local", "DM Sans", sans-serif',
+                  fontFamily: 'var(--font-dm-sans), "DM Sans", "DM Sans Local", sans-serif',
                 }}
               >
                 {activeModal.title}
