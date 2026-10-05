@@ -37,14 +37,14 @@ export default function Home() {
         {/* 3. About Us / Studio Section (Typography & Philosophy) */}
         <StudioSection />
 
-        {/* 4. Treatments Grid Section (Shifted up after studio typography section) */}
+        {/* 4. Bento Grid Section (Modern Technology & Patient Care) */}
+        <BentoGridSection />
+
+        {/* 5. Treatments Grid Section */}
         <TreatmentsGridSection />
 
-        {/* 5. 3D Spatial Google Reviews Zoom Section (Placed after treatments section) */}
+        {/* 6. 3D Spatial Google Reviews Zoom Section */}
         <GoogleReviewsSpatialZoom />
-
-        {/* 6. Bento Grid Section (Modern Technology & Patient Care) */}
-        <BentoGridSection />
       </div>
 
       {/* 7. Ultra-Premium Black Footer & Consultation Suite */}
