@@ -1,1 +1,1 @@
-export { client05Data as activeClinicData } from "./client-05";
+export { client02Data as activeClinicData } from "./client-02";
