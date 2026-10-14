@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ModernDentalScan from "./ModernDentalScan";
-import StickySliceSlider from "./StickySliceSlider";
+import WhyChooseUs from "./WhyChooseUs";
 import { clinicData } from "../data/clinicData";
 
 export default function BentoGridSection() {
@@ -96,9 +96,8 @@ export default function BentoGridSection() {
         </div>
       </section>
 
-      {/* 2. STICKY SLICE SLIDER SECTION */}
-      {/* 1st Slide: Modern Technology | 2nd Slide: Patient Care | 3rd Slide: Personalized Treatment */}
-      <StickySliceSlider />
+      {/* 2. WHY CHOOSE US SECTION (Matches wellness reference layout) */}
+      <WhyChooseUs />
     </div>
   );
 }

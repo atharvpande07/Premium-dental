@@ -10,8 +10,8 @@ import { clinicData } from "../data/clinicData";
 const NAV_LINKS = [
   { name: "Treatments", href: "#treatments" },
   { name: "About Us", href: "#about" },
-  { name: "Technology", href: "#technology" },
-  { name: "Our Team", href: "#team" },
+  { name: "Why Choose us?", href: "#technology" },
+  { name: "The Man The Myth", href: "#team" },
 ];
 
 export default function Header() {

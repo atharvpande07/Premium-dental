@@ -7,6 +7,7 @@ import GoogleReviewsSpatialZoom from "./components/GoogleReviewsMarquee";
 import { StudioSection } from "./components/StudioSection";
 import BentoGridSection from "./components/BentoGridSection";
 import TreatmentsGridSection from "./components/TreatmentsGridSection";
+import CaseGallerySection from "./components/CaseGallerySection";
 import Footer from "./components/Footer";
 
 const BentoShaderBackground = dynamic(
@@ -43,7 +44,10 @@ export default function Home() {
         {/* 5. Treatments Grid Section */}
         <TreatmentsGridSection />
 
-        {/* 6. 3D Spatial Google Reviews Zoom Section */}
+        {/* 6. Case Gallery (3D Parallax Unfurling Showcase) */}
+        <CaseGallerySection />
+
+        {/* 7. 3D Spatial Google Reviews Zoom Section */}
         <GoogleReviewsSpatialZoom />
       </div>
 
