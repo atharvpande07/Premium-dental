@@ -18,6 +18,7 @@ export interface ClinicConfig {
     badge2: string;
     specialty: string;
     quote: string;
+    imagePath?: string;
   };
 
   reputation: {

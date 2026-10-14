@@ -55,7 +55,7 @@ export default function HeroSection() {
       onMouseMove={(e) => e.stopPropagation()}
       onPointerLeave={handlePointerLeave}
       className="relative w-full min-h-[100svh] lg:min-h-[100dvh] flex flex-col justify-between overflow-hidden pt-[clamp(4.25rem,5.25rem,5.75rem)] pb-3 sm:pb-4"
-      aria-label={`${clinicData.name} Pusad`}
+      aria-label={`${clinicData.name} - Modern Dental Care`}
     >
       {/* 1. Cinematic Background Layer with Tooth Artwork */}
       <HeroBackground pointerOffset={pointerOffset} />

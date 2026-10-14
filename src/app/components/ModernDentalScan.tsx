@@ -345,7 +345,7 @@ export default function ModernDentalScan() {
               className="relative w-full h-full will-change-[transform,opacity]"
             >
               <Image 
-                src={getAssetPath("/dentist-mock-image.png")}
+                src={getAssetPath(clinicData.doctor.imagePath || "/dentist-mock-image.png")}
                 alt={clinicData.doctor.name}
                 fill
                 sizes="(max-width: 640px) 350px, (max-width: 1024px) 440px, (max-width: 1280px) 360px, 390px"

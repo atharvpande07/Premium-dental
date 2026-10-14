@@ -5,7 +5,7 @@ import { clinicData } from "./data/clinicData";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = `https://atharvpande07.github.io${basePath}`;
 const pageTitle = `${clinicData.name} | ${clinicData.tagline}`;
-const pageDesc = `${clinicData.name} in Pusad, Maharashtra. Led by ${clinicData.doctor.name}. ${clinicData.doctor.specialty}. Book your consultation today.`;
+const pageDesc = `${clinicData.name} • ${clinicData.contact.addressHeadline}. Led by ${clinicData.doctor.name}. ${clinicData.doctor.specialty}. Book your consultation today.`;
 const ogImageUrl = `https://atharvpande07.github.io${basePath}/og-preview.jpg`;
 
 export const metadata: Metadata = {

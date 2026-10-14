@@ -374,7 +374,7 @@ export default function Footer() {
               </Link>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal max-w-sm mb-6">
-                Pusad&apos;s premier dental clinic and implant centre. Providing gentle, patient-centered, and technology-driven oral healthcare with single-sitting painless root canals and biomimetic smile design.
+                Premier dental healthcare dedicated to gentle, patient-centered, and technology-driven treatment with painless clinical techniques and personalized aesthetic smile design.
               </p>
 
               {/* Physical Studio Address */}
@@ -575,7 +575,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span>© {new Date().getFullYear()} {clinicData.name}. All rights reserved.</span>
             <span className="hidden sm:inline text-slate-700">•</span>
-            <span className="text-slate-400">Pusad, Maharashtra</span>
+            <span className="text-slate-400">{clinicData.contact.addressHeadline.split("•")[1]?.trim() || "Maharashtra"}</span>
           </div>
 
           {/* Interactive Legal Modals Trigger */}

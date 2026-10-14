@@ -1,50 +1,52 @@
 import { ClinicConfig } from "../clinicData";
 
 export const client01Data: ClinicConfig = {
-  name: "Deshmukh Dental Clinic & Implant Centre",
-  marathiName: "देशमुख डेंटल क्लिनिक अँड इंप्लांट सेंटर",
-  shortName: "Deshmukh Dental",
-  tagline: "Dental Clinic & Implant Centre | Dr. Nikitesh Deshmukh | Pusad",
-  watermark: "DESHMUKH DENTAL",
-  monogram: "DD",
-  instagramHandle: "@DESHMUKH.DENTAL",
-  logoPath: "/universal-dental-logo.png",
+  name: "Swastik Dental Clinic",
+  marathiName: "स्वस्तिक डेंटल क्लिनिक",
+  shortName: "Swastik Dental",
+  tagline: "Quality Care. Healthy Smile. Better Life. | Dr. Sayali Sutar | Ghansoli, Navi Mumbai",
+  watermark: "SWASTIK DENTAL",
+  monogram: "SD",
+  instagramHandle: "@SWASTIK.DENTAL",
+  logoPath: "/swastik-dental-logo.png",
 
   doctor: {
-    name: "Dr. Nikitesh Deshmukh",
-    firstName: "Dr. Nikitesh",
-    lastName: "Deshmukh",
-    title: "Dental Surgeon & Implant Specialist",
-    degrees: "BDS, Implantologist",
-    badge1: "Dental Implant Specialist",
+    name: "Dr. Sayali Sutar",
+    firstName: "Dr. Sayali",
+    lastName: "Sutar",
+    title: "Dental Surgeon & Aesthetic Specialist",
+    degrees: "BDS, Dental Surgeon",
+    badge1: "Aesthetic Dental Specialist",
     badge2: "Chief Dental Surgeon",
-    specialty: "Advanced Implantology, Laser Dentistry & Painless Root Canals",
+    specialty: "Aesthetic Dentistry, Smile Makeovers & Comprehensive Oral Care",
     quote:
-      "We are dedicated to providing advanced dentistry with genuine care — utilizing modern technology, meticulous hygiene standards, and gentle, pain-free techniques for every patient.",
+      "Quality Care. Healthy Smile. Better Life. We are devoted to providing personalized, painless dental care with modern technology, gentle touch, and uncompromising hygiene for your entire family.",
+    imagePath: "/dentist-female-mock-image.png",
   },
 
   reputation: {
     rating: 5.0,
-    badgeText: "5.0 ★ Top Rated • Verified Google Reviews",
+    reviewCount: "28",
+    badgeText: "5.0 ★ Top Rated (28 Reviews) • Verified Google Reviews",
     subCaption:
-      "Authentic experiences from patients in Pusad who received painless treatments, advanced implants, and caring dentistry.",
+      "Authentic 5.0-star experiences from patients in Ghansoli, Navi Mumbai who received caring, painless dental treatments and gentle consultations.",
   },
 
   contact: {
-    phoneDisplay: "+91 80555 24782",
-    phoneTel: "+918055524782",
-    phoneRaw: "918055524782",
-    waLink: "https://wa.me/918055524782",
-    email: "contact@deshmukhdental.com",
-    addressHeadline: "Deshmukh Dental Clinic & Implant Centre • Pusad",
+    phoneDisplay: "+91 86987 74401",
+    phoneTel: "+918698774401",
+    phoneRaw: "918698774401",
+    waLink: "https://wa.me/918698774401",
+    email: "contact@swastikdentalclinic.com",
+    addressHeadline: "Swastik Dental Clinic • Ghansoli, Navi Mumbai",
     addressFull:
-      "Sarnaik Complex, Near Bus Stand, Pusad, Maharashtra 445204",
-    plusCode: "WH48+MXQ Pusad, Maharashtra",
+      "Shop no 13, Sector 7, Building F/8, Bipex Rd, Ghansoli, Navi Mumbai, Maharashtra 400701",
+    plusCode: "4X9X+HM Navi Mumbai, Maharashtra",
     googleMapsUrl:
-      "https://maps.google.com/?q=Deshmukh+Dental+Clinic+Sarnaik+complex+near+Busstand+Pusad+Maharashtra+445204",
-    hoursWeekdays: "Monday – Saturday: 10:00 AM – 8:00 PM",
+      "https://maps.google.com/?q=Swastik+Dental+Clinic+Shop+no+13+Sector+7+Building+F/8+Bipex+Rd+Ghansoli+Navi+Mumbai+Maharashtra+400701",
+    hoursWeekdays: "Monday – Saturday: 10:00 AM – 9:00 PM",
     hoursSunday: "Sunday: 10:00 AM – 2:00 PM (Emergency Consultation)",
   },
 
-  bookingPrefix: "DDC-",
+  bookingPrefix: "SWD-",
 };
