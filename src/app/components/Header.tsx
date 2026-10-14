@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { name: "Treatments", href: "#treatments" },
   { name: "About Us", href: "#about" },
   { name: "Why Choose us?", href: "#technology" },
-  { name: "The Man The Myth", href: "#team" },
+  { name: "Our Dentist", href: "#team" },
 ];
 
 export default function Header() {
